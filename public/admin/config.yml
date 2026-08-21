@@ -1,0 +1,31 @@
+backend:
+  name: github
+  repo: Mazztok45/Flore-Azzouz-WebPage
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "services"
+    label: "Services"
+    folder: "src/content/services"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titre", name: "title", widget: "string" }
+      - { label: "Description courte", name: "description", widget: "text" }
+      - { label: "Icône", name: "icon", widget: "string", required: false }
+      - { label: "Ordre d'affichage", name: "order", widget: "number", default: 0 }
+      - { label: "Contenu", name: "body", widget: "markdown" }
+
+  - name: "testimonials"
+    label: "Témoignages"
+    folder: "src/content/testimonials"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nom", name: "name", widget: "string" }
+      - { label: "Fonction / contexte", name: "role", widget: "string", required: false }
+      - { label: "Témoignage", name: "quote", widget: "text" }
+      - { label: "Note", name: "rating", widget: "number", min: 1, max: 5, default: 5 }
