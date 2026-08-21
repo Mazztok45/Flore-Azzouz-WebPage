@@ -1,0 +1,168 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ScrollReveal from "../components/react/ScrollReveal.tsx";
+
+const base = import.meta.env.BASE_URL;
+
+const stats = [
+  { value: "100%", label: "de satisfaction des bénéficiaires sur l'année 2025" },
+  { value: "100%", label: "des bénéficiaires recommanderaient cet accompagnement en bilan de compétences" },
+  { value: "7", label: "Une moyenne de 7 enquêtes métiers par bénéficiaire" },
+  { value: "100%", label: "des bénéficiaires sont satisfaits 6 mois après la fin du bilan de compétences" },
+];
+
+const modalites = [
+  "Méthodes et outils mobilisés",
+  "Déroulement et modalités",
+  "Un premier rendez-vous gratuit et sans engagement",
+  "Tarif et financement, et délais d'accès",
+  "Accessibilité aux personnes en situation de handicap",
+  "Confidentialité et déontologie",
+];
+---
+
+<Layout
+  title="Particulier — Flore Azzouz, Psychologue du travail"
+  description="Consultations en psychologie du travail et bilans de compétences à Lyon, en présentiel ou en visio."
+>
+  <section class="max-w-5xl mx-auto px-6 pt-20 pb-16 text-center">
+    <ScrollReveal client:visible>
+      <h1 class="font-serif text-4xl sm:text-5xl text-brun leading-tight">
+        Quand le travail ne va plus
+      </h1>
+      <p class="mt-6 text-lg text-brun/80 max-w-2xl mx-auto">
+        Le travail peut devenir source de mal-être, de tension ou de perte de sens. Je vous
+        propose un espace pour déposer ce que vous traversez et être accompagné dans la
+        compréhension de votre situation lors de consultations en psychologie du travail.
+      </p>
+      <a
+        href={`${base}contact`}
+        class="inline-block mt-8 bg-terracotta hover:bg-terracotta-dark text-creme px-8 py-3 rounded-full transition-colors"
+      >
+        Prendre rendez-vous
+      </a>
+    </ScrollReveal>
+  </section>
+
+  <section class="bg-sable">
+    <div class="max-w-3xl mx-auto px-6 py-20">
+      <ScrollReveal client:visible>
+        <h2 class="font-serif text-3xl text-brun mb-6">Comprendre ce qui se joue</h2>
+        <p class="text-brun/80 mb-4">
+          Mon travail consiste à vous aider à mettre des mots sur votre vécu au travail et à
+          analyser votre situation. Cela permet notamment de distinguer ce qui vous appartient
+          de ce qui relève du contexte professionnel.
+        </p>
+        <p class="text-brun/80 mb-4">
+          Cette mise en perspective permet souvent de prendre du recul et de vous décharger du
+          poids que vous portez. Le travail d'analyse et de compréhension permet, dans un
+          second temps, de faire émerger des marges de manœuvre ou des solutions adaptées aux
+          problématiques que vous rencontrez.
+        </p>
+        <p class="text-brun/80">
+          J'accompagne des personnes confrontées à des situations variées : souffrance au
+          travail, stress, burn-out, perte de sens, conflits, harcèlement (vécu ou allégué),
+          réorganisations, perte d'emploi, évolution, reconversion professionnelle,
+          reclassement pour raison de santé, difficultés managériales…
+        </p>
+      </ScrollReveal>
+    </div>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 py-20">
+    <ScrollReveal client:visible>
+      <h2 class="font-serif text-3xl text-brun mb-8">Au fil des séances</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-serif text-lg text-brun mb-2">Premier rendez-vous</h3>
+          <p class="text-brun/80 text-sm">
+            La première séance est un temps d'accueil et de clarification. Vous pouvez venir
+            avec une problématique précise, ou simplement avec le sentiment que quelque chose
+            ne va pas. Je vous aide alors à identifier et clarifier ce qui pose problème.
+            Parfois, une seule séance peut déjà permettre d'y voir plus clair.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-serif text-lg text-brun mb-2">Séances régulières</h3>
+          <p class="text-brun/80 text-sm">
+            Au fur et à mesure de l'accompagnement, je vous propose des éclairages, des
+            retours et parfois des pistes de réflexion, de petits exercices ou des ressources
+            documentaires, toujours en lien avec votre situation. Même si les séances sont
+            centrées sur le travail, elles peuvent aussi être un espace pour parler de votre
+            vie personnelle, les deux étant souvent étroitement liées.
+          </p>
+        </div>
+      </div>
+      <div class="mt-8 bg-sauge/10 border border-sauge/30 rounded-2xl p-6 text-sm text-brun/80">
+        <p><span class="font-medium text-brun">Format :</span> séances de 50 min, en présentiel (Lyon 9e) ou en visio.</p>
+        <p class="mt-2"><span class="font-medium text-brun">Tarif :</span> 65€ la séance.</p>
+        <p class="mt-2">
+          L'accompagnement se poursuit tant qu'il vous est utile. Vous êtes libre d'y mettre
+          fin ou de le reprendre selon vos besoins.
+        </p>
+      </div>
+    </ScrollReveal>
+  </section>
+
+  <section class="bg-sable">
+    <div class="max-w-3xl mx-auto px-6 py-20">
+      <ScrollReveal client:visible>
+        <h2 class="font-serif text-3xl text-brun mb-2">Bilan de compétences</h2>
+        <p class="text-brun/80 mb-10">
+          Faire le point pour dessiner la suite de votre parcours professionnel.
+        </p>
+
+        <h3 class="font-serif text-xl text-brun mb-4">Un bilan en 3 phases</h3>
+        <div class="grid gap-4 sm:grid-cols-3 mb-12">
+          {["Phase préliminaire", "Phase d'investigation", "Phase de conclusion"].map((phase) => (
+            <div class="bg-creme rounded-xl p-5 text-center text-sm text-brun font-medium shadow-sm">
+              {phase}
+            </div>
+          ))}
+        </div>
+
+        <h3 class="font-serif text-xl text-brun mb-4">Modalités du bilan</h3>
+        <ul class="grid gap-3 sm:grid-cols-2 text-sm text-brun/80 mb-12">
+          {modalites.map((item) => (
+            <li class="flex gap-2">
+              <span class="text-terracotta">—</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p class="text-brun/80 mb-12">
+          Un accompagnement personnalisé, avec un premier rendez-vous gratuit et sans
+          engagement.
+        </p>
+
+        <h3 class="font-serif text-xl text-brun mb-6 text-center">En chiffres</h3>
+        <div class="grid gap-6 sm:grid-cols-4 text-center">
+          {stats.map((stat) => (
+            <div>
+              <p class="font-serif text-3xl text-terracotta">{stat.value}</p>
+              <p class="text-xs text-brun/70 mt-2">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </ScrollReveal>
+    </div>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 py-24 text-center">
+    <ScrollReveal client:visible>
+      <h2 class="font-serif text-3xl text-brun mb-4">
+        Et si nous faisions le point ensemble ?
+      </h2>
+      <p class="text-brun/80 mb-8">
+        Un premier échange permet souvent d'éclaircir une situation et d'envisager des pistes
+        concrètes.
+      </p>
+      <a
+        href={`${base}contact`}
+        class="inline-block bg-terracotta hover:bg-terracotta-dark text-creme px-8 py-3 rounded-full transition-colors"
+      >
+        Prenons contact
+      </a>
+    </ScrollReveal>
+  </section>
+</Layout>

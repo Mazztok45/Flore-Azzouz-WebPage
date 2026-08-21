@@ -3,27 +3,48 @@ import Layout from "../layouts/Layout.astro";
 import ScrollReveal from "../components/react/ScrollReveal.tsx";
 import { getCollection } from "astro:content";
 
+const base = import.meta.env.BASE_URL;
+
 const services = (await getCollection("services")).sort(
   (a, b) => a.data.order - b.data.order
 );
 const testimonials = await getCollection("testimonials");
+
+const engagements = [
+  {
+    title: "Déontologie",
+    subtitle: "Un cadre sécure et confidentiel",
+    body: "Ma pratique est fondée sur les principes déontologiques de la psychologie, garantissant confidentialité, respect des personnes et de leur autonomie, et indépendance dans l'analyse des situations. Elle s'appuie sur une posture de neutralité, de bienveillance, d'écoute active et de non-jugement.",
+  },
+  {
+    title: "Expertise",
+    subtitle: "Des méthodes fondées et éprouvées",
+    body: "Mon accompagnement s'appuie sur les connaissances issues de la recherche en psychologie du travail et des organisations ainsi que sur des méthodes et outils éprouvés. Je veille à actualiser régulièrement mes connaissances.",
+  },
+  {
+    title: "Rigueur",
+    subtitle: "Une pratique supervisée et en évolution continue",
+    body: "Mon exercice professionnel fait l'objet d'une supervision régulière et s'inscrit dans une démarche continue de formation, de réflexion éthique et d'amélioration de mes pratiques professionnelles.",
+  },
+];
 ---
 
-<Layout title="Flore Azzouz — Psychologue du travail">
+<Layout title="Flore Azzouz — Psychologue du travail et des organisations à Lyon">
   <section class="max-w-5xl mx-auto px-6 pt-20 pb-24 text-center">
     <ScrollReveal client:visible>
       <p class="uppercase tracking-widest text-sauge-dark text-sm mb-4">
-        Psychologue du travail
+        Psychologue du travail et des organisations à Lyon
       </p>
       <h1 class="font-serif text-4xl sm:text-5xl text-brun leading-tight">
         Prendre soin des personnes<br class="hidden sm:block" /> au cœur du travail
       </h1>
       <p class="mt-6 text-lg text-brun/80 max-w-2xl mx-auto">
-        J'accompagne les individus, les équipes et les organisations pour construire
-        un travail plus juste, plus sain et plus humain.
+        J'accompagne les personnes confrontées à des difficultés ou des questionnements
+        professionnels, et les organisations dans leurs enjeux de santé mentale au travail,
+        de prévention des risques psychosociaux et d'accompagnement des situations sensibles.
       </p>
       <a
-        href="#contact"
+        href={`${base}contact`}
         class="inline-block mt-8 bg-terracotta hover:bg-terracotta-dark text-creme px-8 py-3 rounded-full transition-colors"
       >
         Prendre rendez-vous
@@ -31,17 +52,80 @@ const testimonials = await getCollection("testimonials");
     </ScrollReveal>
   </section>
 
-  <section id="services" class="bg-sable">
+  <section class="bg-sable">
     <div class="max-w-5xl mx-auto px-6 py-24">
       <ScrollReveal client:visible>
-        <h2 class="font-serif text-3xl text-brun text-center mb-12">Mes services</h2>
+        <h2 class="font-serif text-3xl text-brun text-center mb-4">
+          Deux niveaux d'accompagnement : individuel et organisationnel
+        </h2>
+        <p class="text-brun/80 text-center max-w-2xl mx-auto mb-12">
+          Les problématiques liées au travail peuvent donner lieu à différentes formes
+          d'accompagnement. Mon activité s'adresse ainsi aux personnes qui souhaitent être
+          accompagnées individuellement comme aux organisations confrontées à des enjeux
+          humains, collectifs, managériaux ou organisationnels.
+        </p>
+      </ScrollReveal>
+      <div class="grid gap-8 sm:grid-cols-2">
+        <ScrollReveal client:visible>
+          <a
+            href={`${base}particulier`}
+            class="block bg-creme rounded-2xl p-8 h-full shadow-sm hover:shadow-md transition-shadow"
+          >
+            <p class="uppercase tracking-wide text-xs text-sauge-dark mb-2">
+              Quand le travail devient difficile
+            </p>
+            <h3 class="font-serif text-xl text-brun">Particuliers</h3>
+          </a>
+        </ScrollReveal>
+        <ScrollReveal client:visible delay={0.1}>
+          <a
+            href={`${base}organisation`}
+            class="block bg-creme rounded-2xl p-8 h-full shadow-sm hover:shadow-md transition-shadow"
+          >
+            <p class="uppercase tracking-wide text-xs text-sauge-dark mb-2">
+              Prévenir et accompagner les situations complexes au travail
+            </p>
+            <h3 class="font-serif text-xl text-brun">Organisations</h3>
+          </a>
+        </ScrollReveal>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-6 py-24 text-center">
+    <ScrollReveal client:visible>
+      <h2 class="font-serif text-3xl text-brun mb-4">Comprendre le travail pour mieux agir</h2>
+      <p class="text-brun/80 max-w-2xl mx-auto">
+        La psychologie du travail s'intéresse aux individus en contexte professionnel et aux
+        effets de l'organisation du travail aux niveaux individuel et collectif. Elle permet
+        de penser conjointement les enjeux de santé mentale au travail et de performance
+        organisationnelle. Mes consultations individuelles et mes interventions en entreprise
+        ouvrent des espaces de réflexion pour comprendre les situations de travail et
+        identifier les leviers sur lesquels agir.
+      </p>
+      <a
+        href={`${base}about`}
+        class="inline-block mt-6 text-terracotta hover:text-terracotta-dark transition-colors"
+      >
+        En savoir + sur mon parcours →
+      </a>
+    </ScrollReveal>
+  </section>
+
+  <section class="bg-sable">
+    <div class="max-w-5xl mx-auto px-6 py-24">
+      <ScrollReveal client:visible>
+        <h2 class="font-serif text-3xl text-brun text-center mb-12">
+          Mes engagements professionnels
+        </h2>
       </ScrollReveal>
       <div class="grid gap-8 sm:grid-cols-3">
-        {services.map((service, index) => (
+        {engagements.map((item, index) => (
           <ScrollReveal client:visible delay={index * 0.1}>
             <div class="bg-creme rounded-2xl p-8 h-full shadow-sm">
-              <h3 class="font-serif text-xl text-brun mb-3">{service.data.title}</h3>
-              <p class="text-brun/80 text-sm">{service.data.description}</p>
+              <h3 class="font-serif text-lg text-brun mb-1">{item.title}</h3>
+              <p class="text-sm text-sauge-dark mb-3">{item.subtitle}</p>
+              <p class="text-brun/80 text-sm">{item.body}</p>
             </div>
           </ScrollReveal>
         ))}
@@ -49,22 +133,44 @@ const testimonials = await getCollection("testimonials");
     </div>
   </section>
 
-  <section id="temoignages" class="max-w-5xl mx-auto px-6 py-24">
+  <section id="services" class="max-w-5xl mx-auto px-6 py-24">
     <ScrollReveal client:visible>
-      <h2 class="font-serif text-3xl text-brun text-center mb-12">Témoignages</h2>
+      <h2 class="font-serif text-3xl text-brun text-center mb-12">Mes domaines d'intervention</h2>
     </ScrollReveal>
     <div class="grid gap-8 sm:grid-cols-2">
-      {testimonials.map((testimonial, index) => (
+      {services.map((service, index) => (
         <ScrollReveal client:visible delay={index * 0.1}>
-          <blockquote class="bg-sauge/10 border border-sauge/30 rounded-2xl p-8 h-full">
-            <p class="text-brun/90 italic">&ldquo;{testimonial.data.quote}&rdquo;</p>
-            <footer class="mt-4 text-sm text-brun/70">
-              <span class="font-medium">{testimonial.data.name}</span>
-              {testimonial.data.role && <span> — {testimonial.data.role}</span>}
-            </footer>
-          </blockquote>
+          <div class="bg-sauge/10 border border-sauge/30 rounded-2xl p-8 h-full">
+            <h3 class="font-serif text-xl text-brun mb-3">{service.data.title}</h3>
+            <p class="text-brun/80 text-sm">{service.data.description}</p>
+          </div>
         </ScrollReveal>
       ))}
+    </div>
+  </section>
+
+  <section id="temoignages" class="bg-sable">
+    <div class="max-w-5xl mx-auto px-6 py-24">
+      <ScrollReveal client:visible>
+        <h2 class="font-serif text-3xl text-brun text-center mb-2">Témoignages</h2>
+        <p class="text-brun/80 text-center max-w-2xl mx-auto mb-12">
+          Chaque témoignage raconte un parcours singulier. Des mots partagés qui donnent à
+          voir ce que l'accompagnement peut permettre.
+        </p>
+      </ScrollReveal>
+      <div class="grid gap-8 sm:grid-cols-2">
+        {testimonials.map((testimonial, index) => (
+          <ScrollReveal client:visible delay={index * 0.1}>
+            <blockquote class="bg-creme rounded-2xl p-8 h-full shadow-sm">
+              <p class="text-brun/90 italic">&ldquo;{testimonial.data.quote}&rdquo;</p>
+              <footer class="mt-4 text-sm text-brun/70">
+                <span class="font-medium">{testimonial.data.name}</span>
+                {testimonial.data.role && <span> — {testimonial.data.role}</span>}
+              </footer>
+            </blockquote>
+          </ScrollReveal>
+        ))}
+      </div>
     </div>
   </section>
 </Layout>

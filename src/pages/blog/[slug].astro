@@ -1,0 +1,42 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ScrollReveal from "../../components/react/ScrollReveal.tsx";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+type Props = { post: CollectionEntry<"blog"> };
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const dateFormatter = new Intl.DateTimeFormat("fr-FR", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+---
+
+<Layout title={`${post.data.title} — Blog Flore Azzouz`} description={post.data.excerpt}>
+  <article class="max-w-2xl mx-auto px-6 pt-20 pb-24">
+    <ScrollReveal client:visible>
+      <p class="text-xs uppercase tracking-widest text-sauge-dark mb-4">
+        {dateFormatter.format(post.data.date)}
+        {post.data.readTime && ` · ${post.data.readTime} de lecture`}
+        {` · Par ${post.data.author}`}
+      </p>
+      <h1 class="font-serif text-3xl sm:text-4xl text-brun leading-tight mb-8">
+        {post.data.title}
+      </h1>
+      <div class="space-y-4 text-brun/80 [&_h2]:font-serif [&_h2]:text-2xl [&_h2]:text-brun [&_h2]:mt-10 [&_h2]:mb-2 [&_h3]:font-serif [&_h3]:text-lg [&_h3]:text-brun [&_h3]:mt-6 [&_h3]:mb-1 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:space-y-1 [&_p]:leading-relaxed">
+        <Content />
+      </div>
+    </ScrollReveal>
+  </article>
+</Layout>

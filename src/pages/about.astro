@@ -1,0 +1,154 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ScrollReveal from "../components/react/ScrollReveal.tsx";
+
+const base = import.meta.env.BASE_URL;
+
+const parcours = [
+  "Avant de me former à la psychologie du travail, j'ai exercé pendant six ans dans le domaine des ressources humaines, plus particulièrement dans le recrutement et la formation. Cette première expérience m'a permis de développer une connaissance concrète du monde de l'entreprise, des métiers, des parcours professionnels et des enjeux liés à l'emploi.",
+  "J'ai par la suite obtenu un Master en psychologie du travail et des organisations à l'Université Lumière Lyon 2. J'ai alors exercé dans la fonction publique, au sein d'un service dédié au handicap et au maintien dans l'emploi, où j'accompagnais des agents déclarés inaptes, ou présentant un risque d'inaptitude pour raisons de santé, dans la construction de nouveaux projets professionnels.",
+  "Cette expérience m'a permis de développer une bonne connaissance des enjeux liés à la santé, au handicap et au maintien dans l'emploi, que je prends aujourd'hui en compte dans les accompagnements que je réalise.",
+  "En 2021, j'ai fait le choix de m'installer en libéral, en développant dans un premier temps mon activité autour du bilan de compétences. Au fil des années, mon activité s'est élargie à d'autres champs de la psychologie du travail et à l'intervention auprès des organisations. J'interviens désormais auprès d'entreprises et d'institutions dans des contextes variés : prévention et diagnostic des risques psychosociaux, accompagnement de salariés, de managers ou de membres de la direction, situations de crise, conflits, permanences psychologiques sur site, analyse des pratiques, actions de sensibilisation et formation.",
+  "J'accompagne également des personnes à titre individuel, confrontées à des situations de souffrance au travail, de questionnement ou d'évolution professionnelle, dans le cadre de consultations en psychologie du travail et de bilans de compétences.",
+  "Cette diversité d'expériences me permet aujourd'hui d'aborder les situations de travail à la fois du point de vue des personnes, des collectifs et des organisations.",
+];
+
+const formations = [
+  {
+    category: "Diplôme",
+    items: ["Master 2 Psychologie du travail et psychologie clinique"],
+  },
+  {
+    category: "Organisation et santé au travail",
+    items: [
+      "Mettre en place des espaces de discussion au travail – ARACT (2020)",
+      "Ergonomie – Groupe JLO (2020)",
+      "Addictologie et risques professionnels – GAE Conseil (2023)",
+    ],
+  },
+  {
+    category: "Psychotraumatologie et situations de crise",
+    items: [
+      "Psychotraumatisme chez l'adulte – CRP de Tours (2026)",
+      "Addictions et trouble de stress post-traumatique – CRP Lyon (2026)",
+      "Intervention psychologique en situation d'urgence – Institut Ayana (2026)",
+      "Premiers secours en santé mentale – PSSM France (2024)",
+    ],
+  },
+  {
+    category: "Accompagnement des parcours professionnels",
+    items: [
+      "Accompagnement à la VAE – Patio Formation (2021)",
+      "Bilan de compétences – CBIO (2021)",
+    ],
+  },
+];
+---
+
+<Layout
+  title="À propos — Flore Azzouz, Psychologue du travail"
+  description="Le parcours, la vision du travail et les formations de Flore Azzouz, psychologue du travail et des organisations à Lyon."
+>
+  <section class="max-w-5xl mx-auto px-6 pt-20 pb-16 text-center">
+    <ScrollReveal client:visible>
+      <h1 class="font-serif text-4xl sm:text-5xl text-brun leading-tight">
+        Une approche à la croisée des personnes et du travail
+      </h1>
+      <p class="mt-6 text-lg text-brun/80 max-w-2xl mx-auto">
+        Psychologue du travail, j'interviens auprès des particuliers et des organisations pour
+        accompagner les situations où le lien au travail se fragilise.
+      </p>
+    </ScrollReveal>
+  </section>
+
+  <section class="bg-sable">
+    <div class="max-w-3xl mx-auto px-6 py-20">
+      <ScrollReveal client:visible>
+        <h2 class="font-serif text-3xl text-brun mb-8">Mon parcours</h2>
+        <div class="space-y-4">
+          {parcours.map((p) => <p class="text-brun/80">{p}</p>)}
+        </div>
+      </ScrollReveal>
+    </div>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 py-20">
+    <ScrollReveal client:visible>
+      <h2 class="font-serif text-3xl text-brun mb-8">Ma vision du travail</h2>
+      <p class="text-brun/80 mb-8">
+        Le travail occupe une place importante dans nos vies. Il peut être source
+        d'épanouissement et de valorisation de soi, mais aussi devenir un lieu de tension, de
+        perte de sens ou de souffrance.
+      </p>
+
+      <h3 class="font-serif text-xl text-brun mb-3">
+        Une approche centrée sur l'individu et son environnement
+      </h3>
+      <p class="text-brun/80 mb-8">
+        Face à une difficulté professionnelle, je considère qu'il est essentiel de ne pas
+        chercher trop rapidement à l'expliquer par les caractéristiques ou les fragilités de
+        la personne. Ce que nous vivons au travail prend place dans un contexte, une
+        organisation, des relations et une histoire professionnelle qu'il est nécessaire de
+        prendre en compte. Bien sûr, la subjectivité a elle aussi toute sa place dans
+        l'analyse.
+      </p>
+
+      <h3 class="font-serif text-xl text-brun mb-3">
+        La conviction que santé mentale et productivité se rejoignent
+      </h3>
+      <p class="text-brun/80 mb-4">
+        La santé mentale au travail peut sembler être un sujet complexe à appréhender pour les
+        organisations. Pourtant, s'en saisir permet de mieux comprendre ce qui se joue sur le
+        terrain pour les salariés.
+      </p>
+      <p class="text-brun/80 mb-4">
+        Prendre en compte ces enjeux ne répond pas uniquement à un objectif de prévention.
+        Cela peut également contribuer à améliorer le fonctionnement de l'organisation, en
+        favorisant l'engagement des équipes, la qualité du travail et des relations
+        professionnelles, et en prévenant certaines conséquences telles que l'absentéisme ou
+        le turnover.
+      </p>
+      <p class="text-brun/80">
+        Je suis convaincue que la santé des personnes et le bon fonctionnement des
+        organisations ne sont pas des enjeux contradictoires, mais qu'ils doivent au contraire
+        être pensés ensemble.
+      </p>
+    </ScrollReveal>
+  </section>
+
+  <section class="bg-sable">
+    <div class="max-w-3xl mx-auto px-6 py-20">
+      <ScrollReveal client:visible>
+        <h2 class="font-serif text-3xl text-brun mb-10">Formation &amp; diplômes</h2>
+        <div class="space-y-8">
+          {formations.map((group) => (
+            <div>
+              <h3 class="text-xs uppercase tracking-widest text-sauge-dark mb-3">
+                {group.category}
+              </h3>
+              <ul class="space-y-2">
+                {group.items.map((item) => (
+                  <li class="flex gap-2 text-brun/80 text-sm">
+                    <span class="text-terracotta">—</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </ScrollReveal>
+    </div>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 py-24 text-center">
+    <ScrollReveal client:visible>
+      <a
+        href={`${base}contact`}
+        class="inline-block bg-terracotta hover:bg-terracotta-dark text-creme px-8 py-3 rounded-full transition-colors"
+      >
+        Prendre rendez-vous
+      </a>
+    </ScrollReveal>
+  </section>
+</Layout>

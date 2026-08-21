@@ -20,4 +20,15 @@ const testimonials = defineCollection({
   }),
 });
 
-export const collections = { services, testimonials };
+const blog = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    author: z.string().default("Flore Azzouz"),
+    date: z.date(),
+    readTime: z.string().optional(),
+    excerpt: z.string(),
+  }),
+});
+
+export const collections = { services, testimonials, blog };

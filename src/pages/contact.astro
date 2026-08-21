@@ -1,0 +1,98 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ScrollReveal from "../components/react/ScrollReveal.tsx";
+
+const CONTACT_EMAIL = "contact@floreazzouz.fr";
+---
+
+<Layout
+  title="Contact — Flore Azzouz, Psychologue du travail"
+  description="Prendre rendez-vous ou poser une question à Flore Azzouz, psychologue du travail et des organisations à Lyon."
+>
+  <section class="max-w-3xl mx-auto px-6 pt-20 pb-16 text-center">
+    <ScrollReveal client:visible>
+      <p class="uppercase tracking-widest text-sauge-dark text-sm mb-4">
+        Psychologue du travail &amp; des organisations
+      </p>
+      <h1 class="font-serif text-4xl sm:text-5xl text-brun leading-tight">
+        Et si nous faisions le point ensemble ?
+      </h1>
+      <p class="mt-6 text-lg text-brun/80 max-w-xl mx-auto">
+        Un premier échange permet souvent d'éclaircir une situation et d'envisager des pistes
+        concrètes.
+      </p>
+    </ScrollReveal>
+  </section>
+
+  <section class="bg-sable">
+    <div class="max-w-xl mx-auto px-6 py-20">
+      <ScrollReveal client:visible>
+        <form id="contact-form" class="space-y-5">
+          <div>
+            <label for="name" class="block text-sm text-brun mb-1">Nom</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              class="w-full rounded-lg border border-sauge/40 bg-creme px-4 py-2 text-brun focus:outline-none focus:ring-2 focus:ring-terracotta"
+            />
+          </div>
+          <div>
+            <label for="email" class="block text-sm text-brun mb-1">Votre Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              placeholder="vous@exemple.com"
+              class="w-full rounded-lg border border-sauge/40 bg-creme px-4 py-2 text-brun focus:outline-none focus:ring-2 focus:ring-terracotta"
+            />
+          </div>
+          <div>
+            <label for="message" class="block text-sm text-brun mb-1">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              required
+              class="w-full rounded-lg border border-sauge/40 bg-creme px-4 py-2 text-brun focus:outline-none focus:ring-2 focus:ring-terracotta"
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-terracotta hover:bg-terracotta-dark text-creme px-8 py-3 rounded-full transition-colors"
+          >
+            Envoyer
+          </button>
+        </form>
+
+        <p class="mt-8 text-center text-sm text-brun/70">
+          Vous pouvez aussi écrire directement à
+          <a href={`mailto:${CONTACT_EMAIL}`} class="text-terracotta hover:text-terracotta-dark">
+            {CONTACT_EMAIL}
+          </a>
+          ou me retrouver sur
+          <a
+            href="https://www.linkedin.com/in/flore-azzouz-83542541/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-terracotta hover:text-terracotta-dark"
+          >
+            LinkedIn
+          </a>.
+        </p>
+      </ScrollReveal>
+    </div>
+  </section>
+
+  <script is:inline define:vars={{ CONTACT_EMAIL }}>
+    document.getElementById("contact-form")?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const data = new FormData(event.target);
+      const subject = `Prise de contact — ${data.get("name")}`;
+      const body = `${data.get("message")}\n\n${data.get("email")}`;
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  </script>
+</Layout>

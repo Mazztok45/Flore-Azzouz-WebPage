@@ -1,0 +1,124 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ScrollReveal from "../components/react/ScrollReveal.tsx";
+
+const base = import.meta.env.BASE_URL;
+
+const interventions = [
+  "Permanence psychologique sur site",
+  "Diagnostic des risques psychosociaux (RPS)",
+  "Formations",
+  "Analyse des pratiques professionnelles",
+  "Accompagnement du handicap au travail",
+  "Intervention en situation de crise",
+  "Médiation et gestion de conflits",
+  "Webinaires",
+  "Bilan de compétences",
+  "Coaching managérial",
+];
+
+const methode = [
+  {
+    title: "Une phase de cadrage",
+    body: "pour comprendre votre demande, vos enjeux, vos contraintes.",
+  },
+  {
+    title: "Une co-construction du dispositif",
+    body: "parce que vous êtes les experts de votre organisation.",
+  },
+  {
+    title: "Une analyse du travail réel",
+    body: "observations, entretiens, pour comprendre ce qui se passe vraiment.",
+  },
+  {
+    title: "Des restitutions régulières",
+    body: "pour partager les constats, ajuster si nécessaire.",
+  },
+  {
+    title: "Un accompagnement dans la durée",
+    body: "parce que transformer prend du temps.",
+  },
+];
+---
+
+<Layout
+  title="Organisation — Flore Azzouz, Psychologue du travail"
+  description="Interventions sur mesure pour prévenir les risques psychosociaux et accompagner les transformations organisationnelles."
+>
+  <section class="max-w-5xl mx-auto px-6 pt-20 pb-16 text-center">
+    <ScrollReveal client:visible>
+      <h1 class="font-serif text-4xl sm:text-5xl text-brun leading-tight">
+        Comprendre et accompagner le travail
+      </h1>
+      <p class="mt-6 text-lg text-brun/80 max-w-2xl mx-auto">
+        Des interventions sur mesure pour prévenir les RPS, accompagner les transformations,
+        et soutenir les collectifs de travail.
+      </p>
+      <a
+        href={`${base}contact`}
+        class="inline-block mt-8 bg-terracotta hover:bg-terracotta-dark text-creme px-8 py-3 rounded-full transition-colors"
+      >
+        Prendre rendez-vous
+      </a>
+    </ScrollReveal>
+  </section>
+
+  <section class="bg-sable">
+    <div class="max-w-5xl mx-auto px-6 py-20">
+      <ScrollReveal client:visible>
+        <h2 class="font-serif text-3xl text-brun text-center mb-12">Interventions</h2>
+      </ScrollReveal>
+      <div class="grid gap-4 sm:grid-cols-2">
+        {interventions.map((item, index) => (
+          <ScrollReveal client:visible delay={(index % 5) * 0.05}>
+            <div class="bg-creme rounded-xl p-5 text-brun text-sm shadow-sm flex gap-3 items-start">
+              <span class="text-terracotta">—</span>
+              {item}
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 py-20">
+    <ScrollReveal client:visible>
+      <h2 class="font-serif text-3xl text-brun mb-4">Méthode</h2>
+      <p class="text-brun/80 mb-8">Chaque intervention est construite sur mesure, à partir de :</p>
+      <ol class="space-y-5">
+        {methode.map((step, index) => (
+          <li class="flex gap-4">
+            <span class="font-serif text-terracotta text-lg">{index + 1}</span>
+            <p class="text-brun/80 text-sm">
+              <span class="font-medium text-brun">{step.title}</span> : {step.body}
+            </p>
+          </li>
+        ))}
+      </ol>
+      <p class="mt-10 text-brun/80 italic">
+        Mon positionnement : une posture d'écoute, de non-jugement, au service de la
+        compréhension du travail et de ses difficultés.
+      </p>
+    </ScrollReveal>
+  </section>
+
+  <section class="bg-sable">
+    <div class="max-w-3xl mx-auto px-6 py-24 text-center">
+      <ScrollReveal client:visible>
+        <h2 class="font-serif text-3xl text-brun mb-4">
+          Et si nous faisions le point ensemble ?
+        </h2>
+        <p class="text-brun/80 mb-8">
+          Un premier échange permet souvent d'éclaircir une situation et d'envisager des
+          pistes concrètes.
+        </p>
+        <a
+          href={`${base}contact`}
+          class="inline-block bg-terracotta hover:bg-terracotta-dark text-creme px-8 py-3 rounded-full transition-colors"
+        >
+          Prenons contact
+        </a>
+      </ScrollReveal>
+    </div>
+  </section>
+</Layout>

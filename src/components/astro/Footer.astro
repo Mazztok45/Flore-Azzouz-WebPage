@@ -1,15 +1,33 @@
 ---
+const base = import.meta.env.BASE_URL;
 const year = new Date().getFullYear();
 ---
 
-<footer id="contact" class="bg-brun text-creme">
-  <div class="max-w-5xl mx-auto px-6 py-12 grid gap-6 sm:grid-cols-2">
+<footer class="bg-brun text-creme">
+  <div class="max-w-5xl mx-auto px-6 py-12 grid gap-8 sm:grid-cols-2">
     <div>
       <p class="font-serif text-lg">Flore Azzouz</p>
-      <p class="text-sm text-creme/80 mt-2">Psychologue du travail</p>
+      <p class="text-sm text-creme/80 mt-2 uppercase tracking-wide">
+        Psychologue du travail &amp; des organisations
+      </p>
+      <a
+        href={`${base}contact`}
+        class="inline-block mt-4 text-sm text-terracotta-light hover:text-creme transition-colors"
+      >
+        Prenons contact →
+      </a>
     </div>
     <div class="text-sm text-creme/80 sm:text-right">
-      <p>contact@floreazzouz.fr</p>
+      <p>
+        <a
+          href="https://www.linkedin.com/in/flore-azzouz-83542541/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-creme transition-colors"
+        >
+          LinkedIn
+        </a>
+      </p>
       <p class="mt-4">&copy; {year} Flore Azzouz. Tous droits réservés.</p>
     </div>
   </div>

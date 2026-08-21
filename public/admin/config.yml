@@ -29,3 +29,16 @@ collections:
       - { label: "Fonction / contexte", name: "role", widget: "string", required: false }
       - { label: "Témoignage", name: "quote", widget: "text" }
       - { label: "Note", name: "rating", widget: "number", min: 1, max: 5, default: 5 }
+
+  - name: "blog"
+    label: "Blog"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titre", name: "title", widget: "string" }
+      - { label: "Auteur", name: "author", widget: "string", default: "Flore Azzouz" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Temps de lecture", name: "readTime", widget: "string", required: false }
+      - { label: "Extrait", name: "excerpt", widget: "text" }
+      - { label: "Contenu", name: "body", widget: "markdown" }

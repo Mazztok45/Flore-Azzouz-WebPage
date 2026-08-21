@@ -1,0 +1,54 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ScrollReveal from "../../components/react/ScrollReveal.tsx";
+import { getCollection } from "astro:content";
+
+const base = import.meta.env.BASE_URL;
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const dateFormatter = new Intl.DateTimeFormat("fr-FR", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+---
+
+<Layout
+  title="Blog — Flore Azzouz, Psychologue du travail"
+  description="Articles sur le travail, la santé mentale et la psychologie du travail."
+>
+  <section class="max-w-5xl mx-auto px-6 pt-20 pb-16 text-center">
+    <ScrollReveal client:visible>
+      <h1 class="font-serif text-4xl sm:text-5xl text-brun leading-tight">Blog</h1>
+      <p class="mt-6 text-lg text-brun/80 max-w-2xl mx-auto">
+        Réflexions et ressources autour du travail et de la santé mentale.
+      </p>
+    </ScrollReveal>
+  </section>
+
+  <section class="bg-sable">
+    <div class="max-w-3xl mx-auto px-6 py-20">
+      <div class="grid gap-6">
+        {posts.map((post, index) => (
+          <ScrollReveal client:visible delay={index * 0.1}>
+            <a
+              href={`${base}blog/${post.slug}`}
+              class="block bg-creme rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <p class="text-xs uppercase tracking-widest text-sauge-dark mb-2">
+                {dateFormatter.format(post.data.date)}
+                {post.data.readTime && ` · ${post.data.readTime} de lecture`}
+              </p>
+              <h2 class="font-serif text-2xl text-brun mb-2">{post.data.title}</h2>
+              <p class="text-brun/80 text-sm">{post.data.excerpt}</p>
+              <p class="text-xs text-brun/60 mt-4">Par {post.data.author}</p>
+            </a>
+          </ScrollReveal>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
